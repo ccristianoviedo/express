@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Celular",
+    "price": 424,
+    "thumbnail": "234",
+    "id": 1
+  },
+  {
+    "title": "impresora",
+    "price": 774,
+    "thumbnail": "635",
+    "id": 2
+  },
+  {
+    "title": "Televisor",
+    "price": 874,
+    "thumbnail": "135",
+    "id": 3
+  },
+  {
+    "title": "Celular",
+    "price": 424,
+    "thumbnail": "234",
+    "id": 4
+  }
+]
