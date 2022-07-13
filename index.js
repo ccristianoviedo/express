@@ -6,8 +6,6 @@ const app = express();
 
 const PORT = 8080;
 
-let visitas = 0;
-
 class Contenedor {
     constructor(filename){
         this.filename = filename + ".txt"
@@ -95,16 +93,7 @@ const work = new Contenedor("desafio")
 
 work.getAll()
  
- app.get("/visitas", (req, res) => {    
-     visitas++;
-     res.send(`<h1>Cantidad de visitas del sitio ${visitas}</h1>`);});
- 
- app.get("/fyh", (req, res) => {
-     let time = new Date();
-     res.send(`<h1> ${time}</h1>`
- );});
- 
- const server = app.listen(PORT, () => {console.log(`Servidor http escuchando en el puerto ${PORT}`);});
+const server = app.listen(PORT, () => {console.log(`Servidor http escuchando en el puerto ${PORT}`);});
  
  server.on("error", (error) => console.log(`Error en servidor ${error}`));
 
