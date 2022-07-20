@@ -49,21 +49,26 @@ class Contenedor {
             console.log("No pudo eliminar");            
         }
     }
-    async getAll(){
+    async getAllProducts(){
         try {
             const content = await fs.promises.readFile(this.filename, "utf8");
             const array = JSON.parse(content);
-            const products = array.map(el=>el)
-            const aleatorio = products[Math.floor(Math.random() * products.length)];
-            app.get("/productos", (req, res) => { 
-
-                res.send(products);});
-            app.get("/productosRandom", (req, res) => {
-
-                res.send(aleatorio);});
+            
+            return array.map(el=> el)       
         } catch (error) {
             console.log(null);            
-        }
+        }       
+    }
+    async getRandomProducts(){
+        try {
+            const content = await fs.promises.readFile(this.filename, "utf8");
+            const array = JSON.parse(content);
+            const products = array.map(el=> el)
+            const aleatorio = products[Math.floor(Math.random() * products.length)];
+           return aleatorio         
+        } catch (error) {
+            console.log(null);            
+        }       
     }
     async deleteAll(){
         try {
@@ -89,9 +94,18 @@ const item3 = {
     price: 774,
     thumbnail: "635"
 }
-const work = new Contenedor("desafio")
+const desafio = new Contenedor("desafio")
 
-work.getAll()
+app.get("/productos",(req, res) => { 
+   
+   res.send(desafio.getAllProducts())
+    
+ });
+ app.get("/productosRandom",(req, res) => { 
+   
+    res.send(desafio.getRandomProducts())
+     
+});   
  
 const server = app.listen(PORT, () => {console.log(`Servidor http escuchando en el puerto ${PORT}`);});
  
